@@ -19,11 +19,11 @@ myu_URL = "http://193.227.50.64/"
 # This path depends on where is your chromedriver
 chrome_options = webdriver.ChromeOptions()
 chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
-# chrome_options.add_argument("--headless")
+chrome_options.add_argument("--headless")
+chrome_options.add_argument("--no-sandbox")
 # chrome_options.add_argument('--disable-gpu')
-# chrome_options.add_argument("--disable-dev-shm-usage")
-# chrome_options.add_argument("--no-sandbox")
-chrome_driver_bath = os.environ.get("CHROMEDRIVER_PATH",chrome_options=chrome_options)
+chrome_options.add_argument("--disable-dev-shm-usage")
+chrome_driver_bath = os.environ.get("CHROMEDRIVER_PATH")
 
 # -----------------------------------------#
 
@@ -142,7 +142,7 @@ def main(user_id, user_password, rate):
     """The main function where all the magic happens"""
     # Create a webdirver
     global driver
-    driver = webdriver.Chrome(executable_path=chrome_driver_bath)
+    driver = webdriver.Chrome(executable_path=chrome_driver_bath,chrome_options=chrome_options)
     # Keep asking the user for input untill they cooperates
     # while True:
     #     try:
