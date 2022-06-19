@@ -78,6 +78,7 @@ def login(user_id, user_password):
     sleep(2)
     # Prees Enter To login
     password_input.send_keys(Keys.ENTER)
+    print("Login in done")
     # Wait for the page to load
     sleep(5)
 
@@ -85,9 +86,12 @@ def login(user_id, user_password):
 def go_to_farabi():
     """Go to farabi Page, This function needs you to be already logedin MYU"""
     # Press farabi
+    print("Farabi start")
+    
     estbian_btn = driver.find_element(by=By.XPATH, value='//*[@id="land-page"]/div/ul/li[10]')
     estbian_btn.click()
     sleep(2)
+    print("Farabi loaded")
 
 
 def do_first_subject(rate):
