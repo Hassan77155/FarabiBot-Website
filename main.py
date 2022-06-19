@@ -51,7 +51,7 @@ def home():
         id = request.form.get("id")
         password = request.form.get("password")
         rate = request.form.get("rate")
-        main(id, password)
+        main(id, password,rate)
         return "<p>Done</p>"
     return render_template("index.html", form=login_form)
 
