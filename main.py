@@ -17,7 +17,7 @@ myu_URL = "http://193.227.50.64/"
 # ---------------Chrom driver--------------#
 # The chrome driver path
 # This path depends on where is your chromedriver
-chrome_driver_bath = "chromedriver.exe"
+chrome_driver_bath = "./chromedriver.exe"
 
 # -----------------------------------------#
 
