@@ -101,6 +101,7 @@ def do_first_subject(rate):
     driver.switch_to.window(driver.window_handles[1])
     print("Tab switched")
     # Press on the subjects
+    print(driver.page_source)
     latest_estbian = driver.find_element(by=By.XPATH, value='//*[@id="appMenu"]/li[2]/a/span')
     latest_estbian.click()
     sleep(3)
