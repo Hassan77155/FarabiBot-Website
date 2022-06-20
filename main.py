@@ -19,11 +19,11 @@ myu_URL = "http://193.227.50.64/"
 # This path depends on where is your chromedriver
 chrome_options = webdriver.ChromeOptions()
 chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
-# chrome_options.add_argument("--headless")
 chrome_options.add_argument("--no-sandbox")
+chrome_options.add_argument("--headless")
 # chrome_options.add_argument('--disable-gpu')
 # chrome_options.add_argument('window-size=1920x1080')
-# chrome_options.add_argument("--disable-dev-shm-usage")
+chrome_options.add_argument("--disable-dev-shm-usage")
 # chrome_driver_bath = "./chromedriver.exe"
 chrome_driver_bath = os.environ.get("CHROMEDRIVER_PATH")
 
@@ -70,6 +70,7 @@ def login(user_id, user_password):
     # Open MYU tab
     driver.get(myu_URL)
     sleep(2)
+    print("Opened login page")
     # Enter Username
     username_input = driver.find_element(by=By.NAME, value="txtUserName")
     username_input.send_keys(user_id)
@@ -98,6 +99,7 @@ def do_first_subject(rate):
     """Select the first subject and complete its requirements"""
     # Switch to the second tab
     driver.switch_to.window(driver.window_handles[1])
+    print("Tab switched")
     # Press on the subjects
     latest_estbian = driver.find_element(by=By.XPATH, value='//*[@id="appMenu"]/li[2]/a/span')
     latest_estbian.click()
