@@ -192,4 +192,4 @@ def main(user_id, user_password, rate):
 
 if __name__ == "__main__":
     # Start the application
-    app.run(debug=True)
+    app.run()
