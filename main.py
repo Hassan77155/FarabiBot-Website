@@ -1,4 +1,5 @@
 import os
+import sys
 from flask import Flask, render_template, request
 from flask_wtf import FlaskForm
 from wtforms import PasswordField, IntegerField, SubmitField
@@ -74,23 +75,29 @@ def login(user_id, user_password):
     # Enter Username
     username_input = driver.find_element(by=By.NAME, value="txtUserName")
     username_input.send_keys(user_id)
+    print("Username is typed")
     # Enter Password
     password_input = driver.find_element(by=By.NAME, value="txtPassword")
     password_input.send_keys(user_password)
+    print("Password is typed")
     sleep(2)
     # Prees Enter To login
     password_input.send_keys(Keys.ENTER)
-    print("Login in done")
     # Wait for the page to load
     sleep(5)
+    print("Login in done")
 
 
 def go_to_farabi():
     """Go to farabi Page, This function needs you to be already logedin MYU"""
     # Press farabi
     print("Farabi start")
-    estbian_btn = driver.find_element(by=By.XPATH, value='//*[@id="land-page"]/div/ul/li[10]')
-    estbian_btn.click()
+    try:
+        estbian_btn = driver.find_element(by=By.XPATH, value='//*[@id="land-page"]/div/ul/li[10]')
+        estbian_btn.click()
+    except NoSuchElementException:
+        print("Farabi button not found")
+        sys.exit()
     sleep(2)
     print("Farabi loaded")
 
@@ -102,12 +109,19 @@ def do_first_subject(rate):
     print("Tab switched")
     # Press on the subjects
     print(driver.page_source)
-    latest_estbian = driver.find_element(by=By.XPATH, value='//*[@id="appMenu"]/li[2]/a/span')
-    latest_estbian.click()
+    try:
+        latest_estbian = driver.find_element(by=By.XPATH, value='//*[@id="appMenu"]/li[2]/a/span')
+        latest_estbian.click()
+    except NoSuchElementException:
+        print("There are no surveys")
+        sys.exit()
     sleep(3)
     # Click on the first Subject
-    first_subject = driver.find_element(by=By.XPATH, value='//*[@id="appMenu"]/li[2]/ol/li[1]/a/span')
-    first_subject.click()
+    try:
+        first_subject = driver.find_element(by=By.XPATH, value='//*[@id="appMenu"]/li[2]/ol/li[1]/a/span')
+        first_subject.click()
+    except NoSuchElementException:
+        print("Couldn't find any subjects")
     sleep(5)
     # Press on all checkboxes
     check_boxes = driver.find_elements(by=By.CSS_SELECTOR, value="input[type='checkbox']")
