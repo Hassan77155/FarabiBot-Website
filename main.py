@@ -92,6 +92,7 @@ def go_to_farabi():
     """Go to farabi Page, This function needs you to be already logedin MYU"""
     # Press farabi
     print("Farabi start")
+    sleep(5)
     try:
         estbian_btn = driver.find_element(by=By.XPATH, value='//*[@id="land-page"]/div/ul/li[10]/a')
         estbian_btn.click()
@@ -108,7 +109,6 @@ def do_first_subject(rate):
     driver.switch_to.window(driver.window_handles[1])
     print("Tab switched")
     # Press on the subjects
-    print(driver.page_source)
     try:
         latest_estbian = driver.find_element(by=By.XPATH, value='//*[@id="appMenu"]/li[2]/a/span')
         latest_estbian.click()
@@ -166,18 +166,7 @@ def main(user_id, user_password, rate):
     global driver
     # driver = webdriver.Chrome(executable_path=chrome_driver_bath)
     driver = webdriver.Chrome(executable_path=chrome_driver_bath,options=chrome_options)
-    # Keep asking the user for input untill they cooperates
-    # while True:
-    #     try:
-    #         # Get a number from user between 1 and 5
-    #         rate = int(input("Enter the rate you want to press for every thing: "))
-    #     except:
-    #         # In case the user doesn't give a valid int
-    #         print("Please enter an int between 1 and 5:")
-    #         rate = int(input("Enter the rate you want to press for every thing: "))
-    #     # Only break when we have a valid int
-    #     if rate > 0 or rate <= 5:
-    #         break
+    
 
     # Login to MYU
     login(user_id, user_password)
