@@ -93,7 +93,7 @@ def go_to_farabi():
     # Press farabi
     print("Farabi start")
     try:
-        estbian_btn = driver.find_element(by=By.XPATH, value='//*[@id="land-page"]/div/ul/li[10]')
+        estbian_btn = driver.find_element(by=By.XPATH, value='//*[@id="land-page"]/div/ul/li[10]/a')
         estbian_btn.click()
     except NoSuchElementException:
         print("Farabi button not found")
