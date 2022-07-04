@@ -100,6 +100,7 @@ def go_to_farabi():
     except NoSuchElementException:
         print("Farabi button not found")
         print(driver.page_source)
+        return "<p>Error 1</p>"
         sys.exit()
     sleep(2)
     print("Farabi loaded")
@@ -116,6 +117,7 @@ def do_first_subject(rate):
         latest_estbian.click()
     except NoSuchElementException:
         print("There are no surveys")
+        return "<p>Error 2</p>"
         sys.exit()
     sleep(3)
     # Click on the first Subject
