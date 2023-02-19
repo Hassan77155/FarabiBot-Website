@@ -127,7 +127,7 @@ def do_first_subject(rate):
     except NoSuchElementException:
         print("Couldn't find any subjects")
     sleep(5)
-    # Press on all checkboxes
+    # Press on all checkboxes.
     check_boxes = driver.find_elements(by=By.CSS_SELECTOR, value="input[type='checkbox']")
     for box in check_boxes:
         try:
